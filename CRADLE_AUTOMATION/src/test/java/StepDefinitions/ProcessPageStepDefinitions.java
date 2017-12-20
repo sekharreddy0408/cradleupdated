@@ -66,6 +66,14 @@ public class ProcessPageStepDefinitions {
 	 PP.i_click_on_yes_button_for_dose_process_page(); 
 	}
 
+	
+
+	@When("^i click on mthree icon of process page for liquid$")
+	public void i_click_on_mthree_icon_of_process_page_for_liquid()  {
+	   PP.i_click_on_mthree_icon_of_process_page_for_liquid();
+	}
+	
+	
 	@When("^i click on mthree icon of process page$")
 	public void i_click_on_m_icon_of_process_page()  {
 	   PP.i_click_on_m_icon_of_process_page();
@@ -81,6 +89,24 @@ public class ProcessPageStepDefinitions {
 	
 	
 	
+	@When("^i edit value for volume for process page for liquid$")
+	public void i_edit_value_for_volume_for_process_page_for_liquid(DataTable vol)  {
+	   
+		List<List<String>> data = vol.raw();
+		
+		PP.i_edit_value_for_volume_for_process_page_for_liquid(data.get(0).get(0));
+	}
+	
+	
+	@When("^i edit value for weight for process page for liquid$")
+	public void i_edit_value_for_weight_for_process_page_for_liquid(DataTable vol)  {
+	   
+		List<List<String>> data = vol.raw();
+		
+		PP.i_edit_value_for_weight_for_process_page_for_liquid(data.get(0).get(0));
+	}
+	
+	
 	@When("^i edit value for volume for process page$")
 	public void i_edit_value_for_volume_for_process_page(DataTable vol)  {
 	   
@@ -89,12 +115,7 @@ public class ProcessPageStepDefinitions {
 		PP.i_edit_value_for_volume_for_process_page(data.get(0).get(0));
 	}
 
-	@When("^i edit value for weight for process page to reset to default$")
-	public void i_edit_value_for_weight_for_process_page_to_reset_to_default()  {
-	   
-		PP.i_edit_value_for_weight_for_process_page_to_reset_to_default();
 	
-	}
 	
 	@When("^i edit value for weight for process page$")
 	public void i_edit_value_for_weight_for_process_page(DataTable weight)  {
@@ -110,9 +131,9 @@ public class ProcessPageStepDefinitions {
 	}
 
 	
-	@Then("^i click on save button for mthree process page to default$")
-	public void i_click_on_save_button_for_mthree_process_page_to_default() {
-	   PP.i_click_on_save_button_for_mthree_process_page_to_default();
+	@Then("^i click on save button for mthree process page for liquid$")
+	public void i_click_on_save_button_for_mthree_process_page_for_liquid() {
+	   PP.i_click_on_save_button_for_mthree_process_page_for_liquid();
 	}
 	
 	@When("^i click on cancel button for mthree icon$")

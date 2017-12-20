@@ -134,29 +134,15 @@ Scenario: Process a Waste Item - Fields GDWR353
 	And i Click on dose icon of process page 
 	When i click on cancel button for dose process page 
 	And i click on yes button for dose process page 
-	When i click on mthree icon of process page 
-	And  i edit value for volume for process page 
+	When i click on mthree icon of process page for liquid
+	And  i edit value for volume for process page for liquid
 		|12| 
-	And i edit value for weight for process page 
+	And i edit value for weight for process page for liquid
 		|2| 
-	Then i click on save button for mthree process page 
+	Then i click on save button for mthree process page for liquid
+	
 	When i click on mthree icon of process page 
 	And  i click on cancel button for mthree icon 
 	And i click on yes for mthree button process page 
 	
 	
-@Test1 
-Scenario: Process defaults lines reset 
-#	Given Navigate to the login page 
-#	When  Enter Username 
-#		|sekharreddy.04.08| 
-#	And   Enter Pin 
-#		|251217|
-#	And   Click Submit button 
-#	And  I am on the Collect tab 
-#	And i click on process tab 
-	
-	When i click on mthree icon of process page 
-	And  i edit value for volume for process page to reset to default 
-	And i edit value for weight for process page to reset to default 
-	Then i click on save button for mthree process page to default 

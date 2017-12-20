@@ -40,6 +40,18 @@ public class methodsforProcessPage {
 	@FindBy(xpath = "//*[@id='11']/span[5] ")  //*[@id='wasteItem.doseBtn']
 	public static WebElement doseicon_processpage;
 	
+	@FindBy(xpath = "//*[@id='9']/span[7]/div")  
+	public static WebElement Liquid_doseicon_processpage;
+	
+	@FindBy(id = "processlist.9.mass.volume")  
+	public static WebElement Liquid_vol_processpage;
+	
+	@FindBy(id = "processlist.9.mass.weight")  
+	public static WebElement Liquid_weight_processpage;
+	
+	@FindBy(xpath = "//*[@id='9']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]")  
+	public static WebElement Liquid_save_processpage;
+	
 	@FindBy(xpath = "//*[@id='processlist.11.dose.contactDose']")
 	public static WebElement contactdoserate_processpage;
 	
@@ -60,8 +72,9 @@ public class methodsforProcessPage {
 	
 	@FindBy(xpath = "//*[@id='wasteItem.massBtn']")
 	public static WebElement m3icon_processpage;
-
-	@FindBy(xpath = "//*[@id='11']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]")
+	
+	//*[@id="11"]/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]/span
+	@FindBy(xpath = "//*[@id='11']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]/span")
 	public static WebElement save_m3icon_processpage;
 	
 	@FindBy(xpath = "//*[@id='9']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]")
@@ -415,6 +428,27 @@ public class methodsforProcessPage {
 
 	}
 	
+	
+	public static void i_click_on_mthree_icon_of_process_page_for_liquid() {
+
+		try {
+
+			Thread.sleep(100);
+			UtilFile.invisibleshorttime();
+			UtilFile.waitForElementToBeClickable(Liquid_doseicon_processpage).click();
+			
+
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}	
+	
 	public static void i_edit_value_for_volume_for_process_page(String volvalue) {
 
 		try {
@@ -433,6 +467,25 @@ public class methodsforProcessPage {
 
 	}
 	
+	
+	
+	public static void i_edit_value_for_volume_for_process_page_for_liquid(String volvalue) {
+
+		try {
+
+			
+			UtilFile.waitForElementToBeClickable(Liquid_vol_processpage).clear();
+			Liquid_vol_processpage.sendKeys(volvalue);
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
 	
 	public static void i_edit_value_for_volume_for_process_page_to_reset_to_default() {
 
@@ -470,12 +523,13 @@ public class methodsforProcessPage {
 
 	}
 	
-	public static void i_edit_value_for_weight_for_process_page_to_reset_to_default() {
+	public static void i_edit_value_for_weight_for_process_page_for_liquid(String val) {
 
 		try {
 
 			Thread.sleep(1000);
-			UtilFile.waitForElementToBeClickable(weight_m3icon_processpage).clear();
+			UtilFile.waitForElementToBeClickable(Liquid_weight_processpage).clear();
+			Liquid_weight_processpage.sendKeys(val);
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -506,13 +560,13 @@ public class methodsforProcessPage {
 	
 	
 	
-	public static void i_click_on_save_button_for_mthree_process_page_to_default() {
+	public static void i_click_on_save_button_for_mthree_process_page_for_liquid() {
 
 		try {
 
 			Thread.sleep(1000);
-			UtilFile.waitForElementToBeClickable(save_m3icon_processpage).click();
-			Thread.sleep(5000);
+			UtilFile.waitForElementToBeClickable(Liquid_save_processpage).click();
+			Thread.sleep(3000);
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());

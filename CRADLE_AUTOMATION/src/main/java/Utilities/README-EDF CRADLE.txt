@@ -55,8 +55,6 @@ all the dependencies needed for the project are defined in POM.xml which is the 
 
 
 
-note:
 
-After each run of the project Delete all the contents in m3/kg and save it and verify the container shows in red. This is to be done for verifying the incomplete waste to submit. 
 
 
