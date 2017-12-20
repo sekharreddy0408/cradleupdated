@@ -36,7 +36,7 @@ Scenario: Initial log in create password (pin) GDRW - 359
 		|251217|
 	And   Click Submit button 
 	Then  Verify the loggedin user 
-		|Chandra|
+		|Chandra Puli|
 		
 @Test1 
 Scenario: Classify all information as Protect - Proprietary - GDRW-75 
