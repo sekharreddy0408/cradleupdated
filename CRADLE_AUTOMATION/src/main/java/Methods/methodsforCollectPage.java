@@ -241,6 +241,17 @@ public class methodsforCollectPage {
 	public static WebElement Collectpage_hint;
 
 	
+	// Created Line details
+	
+	
+	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[5]/article/div/div[2]/div[2]/ul/li[1]/ul/li[2]")
+	public static WebElement description_of_waste_created;
+
+	
+	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[5]/article/div/div[2]/div[2]/ul/li[3]/ul/li[2]")
+	public static WebElement description_of_waste_created_hint;
+	
+	
 	
 	
 	
@@ -288,7 +299,7 @@ public class methodsforCollectPage {
 
 		try {
 
-			Thread.sleep(3000);
+			Thread.sleep(1500);
 
 			ArrayList<String> actualdescriptionoptions = new ArrayList<String>();
 			List<WebElement> dropelements = WebConnector.driver.findElements(By.tagName("button"));
@@ -1271,9 +1282,11 @@ public class methodsforCollectPage {
 
 		try {
 
-			System.out.println(VIEW_All.getAttribute("value"));
-			if (VIEW_All.getAttribute("value").contains(verifyitemdata)) {
-				System.out.println(VIEW_All.getAttribute("value") + "are displayed");
+			System.out.println(SortBy.getAttribute("value"));
+			if (SortBy.getAttribute("value").contains(verifyitemdata)) {
+				System.out.println(SortBy.getAttribute("value") + "are displayed");
+			}else {
+				System.out.println("data in sortby dropdown dint match");
 			}
 
 		} catch (StaleElementReferenceException e) {
@@ -1536,6 +1549,34 @@ public class methodsforCollectPage {
 
 	}
 
+	
+	public static void I_see_an_item_created_with_the_same_uniqueID() {
+
+		try {
+
+			UtilFile.waitForElementToBeClickable(description_of_waste_created_hint);
+			System.out.println(description_of_waste_created.getText());
+			if(description_of_waste_created.getText().contains("Cuboid HEPA Filter"))
+			{
+				System.out.println("verified created filter");
+			}else {
+				System.out.println("created filter did not match");
+			}
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
+
+	
+	
+	
+	
 	public static void I_press_the_No_option() {
 
 		try {

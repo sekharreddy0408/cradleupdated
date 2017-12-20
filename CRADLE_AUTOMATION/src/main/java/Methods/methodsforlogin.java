@@ -139,9 +139,7 @@ public class methodsforlogin {
     			System.out.println("Element was not found in DOM "+ e.getMessage());
     		} catch (Exception e) {
     			System.out.println("Unable to click on element "+ e.getMessage());
-    		}catch(AssertionError e){
-    			System.out.println("data dint match");
-    			}
+    		}
     	
     	
     	
@@ -153,7 +151,7 @@ public class methodsforlogin {
         	try {
         	
         		
-        	Thread.sleep(7000);
+        		Thread.sleep(7000);
             UtilFile.waitForElementToBeClickable(Cloudicon).click();
         	Thread.sleep(3000);
             
@@ -173,7 +171,6 @@ public class methodsforlogin {
 
         	try {
         	
-            
             UtilFile.verifydownloadedfilefromdownloads(".xlsx");
         	
         	}catch (StaleElementReferenceException e) {
@@ -228,7 +225,6 @@ public class methodsforlogin {
 
         	try {
         	
-            Log.info("I_see_a_reset_pin_page_with_options_to_reset_or_cancel");
             
             UtilFile.waitforpagetoload();
             Thread.sleep(3000);

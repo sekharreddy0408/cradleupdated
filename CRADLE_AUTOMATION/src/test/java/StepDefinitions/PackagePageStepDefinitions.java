@@ -1,9 +1,12 @@
 package StepDefinitions;
 
+import java.util.List;
+
 import org.openqa.selenium.support.PageFactory;
 
 import Methods.methodsforPackagePage;
 import Utilities.WebConnector;
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -32,6 +35,12 @@ public class PackagePageStepDefinitions {
 		PKP.I_select_an_Item();
 	}
 
+	@When("^Select cancel button of package page$")
+	public void Select_cancel_button_of_package_page() {
+		PKP.Select_cancel_button_of_package_page();
+	}
+	
+	
 	@And("^I Click on pack items button$")
 	public void I_Click_on_pack_items_button() {
 		PKP.I_Click_on_pack_items_button();
@@ -73,8 +82,10 @@ public class PackagePageStepDefinitions {
 	}
 
 	@Then("^I will see a pop up displaying This will add item to package with options to click cancel or ok$")
-	public void I_will_see_a_pop_up_displaying_This_will_add_item_to_package_with_options_to_click_cancel_or_ok() {
-
+	public void I_will_see_a_pop_up_displaying_This_will_add_item_to_package_with_options_to_click_cancel_or_ok(DataTable datastring) {
+			
+			List<List<String>> data = datastring.raw();
+		PKP.I_will_see_a_pop_up_displaying_This_will_add_item_to_package_with_options_to_click_cancel_or_ok(data.get(0).get(0));
 	}
 
 	@When("^I select multiple Items$")
@@ -201,7 +212,7 @@ public class PackagePageStepDefinitions {
 		PKP.Click_on_cancel_button_of_create_new_package();
 	}
 	
-	@When("^Clickon_submitbutton_newpackage$")
+	@When("^Clickon submitbutton newpackage$")
 	public void Clickon_submitbutton_newpackage() {
 		PKP.Clickon_submitbutton_newpackage();
 	}
@@ -233,12 +244,16 @@ public class PackagePageStepDefinitions {
 	}
 
 	@Then("^I see information date,description,stream,sorage location,route about a package$")
-	public void I_see_information_date_of_package() {
-		PKP.I_see_information_date_of_package();
-		PKP.I_see_information_Description_of_package();
-		PKP.I_see_information_stream_of_package();
-		PKP.I_see_information_stored_of_package();
-		PKP.I_see_informationroute_of_package();
+	public void I_see_information_date_of_package(DataTable datavalues) {
+	
+			List<List<String>> data = datavalues.raw();
+		
+		
+		PKP.I_see_information_date_of_package(data.get(0).get(0));
+		PKP.I_see_information_Description_of_package(data.get(0).get(1));
+		PKP.I_see_information_stream_of_package(data.get(0).get(2));
+		PKP.I_see_information_stored_of_package(data.get(0).get(3));
+		PKP.I_see_informationroute_of_package(data.get(0).get(4));
 		
 	}
 
@@ -571,4 +586,15 @@ public void all_mandatory_fields_have_been_entered_then_item_is_moved_to_Consign
 }
 
 	
+// select most recently submitted from packagE
+
+
+
+
+@When("^Click ok to delete waste from package$")
+public void Click_ok_to_delete_waste_from_package()  {
+	 PKP.Click_ok_to_delete_waste_from_package();
+}
+
+
 }

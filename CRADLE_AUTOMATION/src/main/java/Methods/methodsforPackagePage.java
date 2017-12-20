@@ -32,7 +32,8 @@ public class methodsforPackagePage {
 	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[1]")
 	public static WebElement PackageBox;
 
-	
+	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/form/div[2]/button[2]")
+	public static WebElement Cancelbutton_Package;
 	
 	// packitems button and options
 
@@ -57,23 +58,26 @@ public class methodsforPackagePage {
 
 //	@FindBy(xpath = "//*[@id='packagelist.14.delete']")
 //	public static WebElement cancel_addedlist_multiple_packagebox;
-	
-	@FindBy(id = "packagelist.14.delete")
+
+	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[2]/div/div/div[2]/div/div/div/div[3]/table/tbody/tr[2]/td[7]")
 	public static WebElement cancel_addedlist_multiple_packagebox;
 
 	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[4]/div/div[2]/div/div/div/div[2]/button[2]")
 	public static WebElement YES_cancel_addedlist_packagebox; 
 
-	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[2]/div/div/div[2]/div/div/div/div[1]/button")
+	@FindBy(css = "button.close-btn")
 	public static WebElement BIG_cancel_addedlist_packagebox; 
-	 
+	
+	
+	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/div/div/div[2]/div/div/div/div[1]/h4/div")
+	public static WebElement popup_message_add_elements; 
 	
 	// CONTAINER OPTIONS LHS
 
 	
 	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[1]/div/div/a[1]")
 	public static WebElement Package_LHS_Options;
-	
+
 	@FindBy(xpath = "//*[@id='app']/div/div[2]/div[7]/div/article/div/div[2]/div[1]/div/ul/li[1]/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]/span[2]")
 	public static WebElement Package_LHS_Options_DATE;
 	
@@ -305,6 +309,13 @@ public class methodsforPackagePage {
 	
 	
 	
+// Select most recently submitted package
+
+
+	@FindBy(css = "button.alertModal--okButton")
+	public static WebElement recently_submitted_process_okButton;
+	
+	
 	
 	public static void I_Click_on_Package_Tab() {
 
@@ -350,6 +361,25 @@ public class methodsforPackagePage {
 
 			
 			UtilFile.waitForElementToBeClickable(Packageitem_leftmost).click();
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " +e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
+	
+	
+	
+	public static void Select_cancel_button_of_package_page() {
+
+		try {
+
+			
+			UtilFile.waitForElementToBeClickable(Cancelbutton_Package).click();
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -457,7 +487,7 @@ public class methodsforPackagePage {
 
 		try {
 
-		
+			Thread.sleep(500);
 			UtilFile.invisible();
 			UtilFile.waitForElementToBeClickable(cancel_addedlist_multiple_packagebox).click();
 			
@@ -478,11 +508,14 @@ public class methodsforPackagePage {
 
 	public static void BIG_Cancel_addedlist_mainpackagebox() {
 
+		
 		try {
+			
+			Thread.sleep(5000);
 
-			//Thread.sleep(4000);
-			UtilFile.invisible();
 			UtilFile.waitForElementToBeClickable(BIG_cancel_addedlist_packagebox).click();
+		
+			
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -494,7 +527,34 @@ public class methodsforPackagePage {
 
 	}
 	
-	public static void YES_cancel_addedlist_packagebox() {
+	
+	
+	
+public static void I_will_see_a_pop_up_displaying_This_will_add_item_to_package_with_options_to_click_cancel_or_ok(String Verifymessage) {
+
+		
+		try {
+			
+			Thread.sleep(1000);
+
+			UtilFile.waitForElementToBeClickable(popup_message_add_elements);
+		System.out.println(popup_message_add_elements.getText());
+			Assert.assertEquals(Verifymessage,popup_message_add_elements.getText() );
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " +e.getMessage());
+	 	} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
+}
+
+}
+
+
+public static void YES_cancel_addedlist_packagebox() {
 
 		try {
 
@@ -635,7 +695,6 @@ public class methodsforPackagePage {
 			
 			ArrayList<String> actual_description_package= new ArrayList<String>();
 			
-			Log.info("Verify all the elements in description");
 		List<WebElement> all_description_names =WebConnector.driver.findElements(By.tagName("button"));
 		
 		System.out.println(all_description_names.size());
@@ -708,7 +767,6 @@ ArrayList<String> expected_stored_package= new ArrayList<String>(Arrays.asList("
 			
 			ArrayList<String> actual_stored_package= new ArrayList<String>();
 			
-			Log.info("Verify all the elements in stored");
 		List<WebElement> all_stored_names =WebConnector.driver.findElements(By.tagName("button"));
 		
 		System.out.println(all_stored_names.size());
@@ -785,7 +843,6 @@ ArrayList<String> expected_stream_package= new ArrayList<String>(Arrays.asList("
 			
 			ArrayList<String> actual_stream_package= new ArrayList<String>();
 			
-			Log.info("Verify all the elements in stream");
 		List<WebElement> all_stream_names =WebConnector.driver.findElements(By.tagName("button"));
 		
 		
@@ -858,7 +915,6 @@ ArrayList<String> expected_route_package= new ArrayList<String>(Arrays.asList("D
 			
 			ArrayList<String> actual_route_package= new ArrayList<String>();
 			
-			Log.info("Verify all the elements in route");
 		List<WebElement> all_route_names =WebConnector.driver.findElements(By.tagName("button"));
 		
 		System.out.println(all_route_names.size());
@@ -1047,13 +1103,16 @@ ArrayList<String> expected_route_package= new ArrayList<String>(Arrays.asList("D
 	
 	
 	
-	public static void I_see_information_date_of_package() {
+	public static void I_see_information_date_of_package(String dataval) {
 
 		try {
 
 			
-			UtilFile.waitForElementToBeDisplayed(Package_LHS_Options_DATE);
+			UtilFile.waitForElementToBeClickable(Package_LHS_Options_DATE);
 			System.out.println(Package_LHS_Options_DATE.getText());
+			Assert.assertEquals(dataval, Package_LHS_Options_DATE.getText());
+			System.out.println("data matched");
+			
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -1061,72 +1120,92 @@ ArrayList<String> expected_route_package= new ArrayList<String>(Arrays.asList("D
 			System.out.println("Element was not found in DOM " +e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
 		}
 
 	}	
 	
-	public static void I_see_information_Description_of_package() {
+	public static void I_see_information_Description_of_package(String dataval) {
 
 		try {
 
 			
-			UtilFile.waitForElementToBeDisplayed(Package_LHS_Options_DESCRIPTION);
+			UtilFile.waitForElementToBeClickable(Package_LHS_Options_DESCRIPTION);
 			System.out.println(Package_LHS_Options_DESCRIPTION.getText());
-
+			Assert.assertEquals(dataval,Package_LHS_Options_DESCRIPTION.getText());
+			System.out.println("data matched");
+			
+			
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
 		} catch (NoSuchElementException e) {
 			System.out.println("Element was not found in DOM " +e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
 	
-	public static void I_see_information_stream_of_package() {
+	public static void I_see_information_stream_of_package(String dataval) {
 
 		try {
 
 			
-			UtilFile.waitForElementToBeDisplayed(Package_LHS_Options_STREAM);
+			UtilFile.waitForElementToBeClickable(Package_LHS_Options_STREAM);
 			System.out.println(Package_LHS_Options_STREAM.getText());
-
+			Assert.assertEquals(dataval,Package_LHS_Options_STREAM.getText());
+			System.out.println("data matched");
+			
+			
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
 		} catch (NoSuchElementException e) {
 			System.out.println("Element was not found in DOM " +e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
 	
-	public static void I_see_information_stored_of_package() {
+	public static void I_see_information_stored_of_package(String dataval) {
 
 		try {
-
 			
-			UtilFile.waitForElementToBeDisplayed(Package_LHS_Options_Stored);
+			
+			UtilFile.waitForElementToBeClickable(Package_LHS_Options_Stored);
 			System.out.println(Package_LHS_Options_Stored.getText());
-
+			Assert.assertEquals(dataval,Package_LHS_Options_Stored.getText());
+			System.out.println("data matched");
+			
+			
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
 		} catch (NoSuchElementException e) {
 			System.out.println("Element was not found in DOM " +e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
 	
 	
-	public static void I_see_informationroute_of_package() {
+	public static void I_see_informationroute_of_package(String dataval) {
 
 		try {
 
 			
-			UtilFile.waitForElementToBeDisplayed(Package_LHS_Options_Route);
+			UtilFile.waitForElementToBeClickable(Package_LHS_Options_Route);
 			System.out.println(Package_LHS_Options_Route.getText());
+			Assert.assertEquals(dataval,Package_LHS_Options_Route.getText());
+			System.out.println("data matched");
+			
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -1134,6 +1213,8 @@ ArrayList<String> expected_route_package= new ArrayList<String>(Arrays.asList("D
 			System.out.println("Element was not found in DOM " +e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e) {
+			System.out.println(e.getMessage());
 		}
 
 	}
@@ -2221,6 +2302,23 @@ ArrayList<String> expected_route_package= new ArrayList<String>(Arrays.asList("D
 	}
 	
 	
+	
+	public static void Click_ok_to_delete_waste_from_package() {
+
+		try {
+
+			
+			UtilFile.waitForElementToBeClickable(recently_submitted_process_okButton).click();
+			
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
 	
 	
 }

@@ -60,9 +60,13 @@ public class methodsforProcessPage {
 	
 	@FindBy(xpath = "//*[@id='wasteItem.massBtn']")
 	public static WebElement m3icon_processpage;
-	
+
 	@FindBy(xpath = "//*[@id='11']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]")
 	public static WebElement save_m3icon_processpage;
+	
+	@FindBy(xpath = "//*[@id='9']/span[7]/div/div/div/div/div[2]/div/div/div/div[1]/button[2]")
+	public static WebElement new_save_m3icon_processpage;
+	
 	
 	@FindBy(xpath = "//*[@id='processlist.11.mass.volume']")
 	public static WebElement volume_m3icon_processpage;
@@ -79,22 +83,39 @@ public class methodsforProcessPage {
 // delete waste items
 	
 	
-	@FindBy(xpath = "//*[@id='processlist.11.delete']")
-	public static WebElement delete_button_item_process_page;	
+//	@FindBy(xpath = "//*[@id='processlist.11.delete']")
+//	public static WebElement delete_button_item_process_page;
 	
-	@FindBy(xpath = "//*[@id='11']/span[11]/div/div/div/div[2]/div/div/div/div[2]/button[2]")
+	@FindBy(css = "button[id^='processlist']")
+	public static WebElement delete_button_item_process_page;
+	
+	@FindBy(css = "button.item--submit")
+	public static WebElement submit_button_item_process_page_most_recently_created;
+	
+	@FindBy(css = "button.confirm--yes")
+	public static WebElement Yes_submit_button_item_process_page_most_recently_created;
+	
+	
+//	@FindBy(xpath = "//*[@id='11']/span[11]/div/div/div/div[2]/div/div/div/div[2]/button[2]")
+//	public static WebElement Yes_delete_button_item_process_page;
+	
+	@FindBy(css = "button.confirmModal--greenBtn")
 	public static WebElement Yes_delete_button_item_process_page;
 	
+//	@FindBy(xpath = "//*[@id='11']/span[11]/div/div/div/div[2]/div/div/div/div[2]/button[1]")
+//	public static WebElement NO_delete_button_item_process_page;
 	
-	@FindBy(xpath = "//*[@id='11']/span[11]/div/div/div/div[2]/div/div/div/div[2]/button[1]")
+	@FindBy(css = "button.confirmModal--noBtn")
 	public static WebElement NO_delete_button_item_process_page;
 	
-	@FindBy(xpath = "//*[@id='11']/span[11]/div/div/div/div[2]/div/div/div/div[1]/h4/div/span")
+	
+	//*[@id="9"]/span[11]/div/div/div/div[2]/div/div/div/div[1]/h4/div/span
+	@FindBy(xpath = "//*[@id='9']/span[11]/div/div/div/div[2]/div/div/div/div[1]/h4/div/span")
 	public static WebElement deleteitem_message_process;
 	
 	
 	//OPTIONS ON LINE INCOMPLETE FIELDS
-	
+	//*[@id="processlist.11.submit"]/button
 	
 	@FindBy(xpath = "//*[@id='processlist.11.submit']/button")
 	public static WebElement INCOMPLETELINE_SUBMITBUTTON;
@@ -102,16 +123,16 @@ public class methodsforProcessPage {
 	@FindBy(xpath = "//*[@id='inCompleteData']/div/div/div/div/h4/div/span")
 	public static WebElement INCOMPLETELINE_ERRORMESSAGE;
 	
-	@FindBy(xpath = "//*[@id='inCompleteData']/div/div/div/div/button")
+	@FindBy(css = "button.close-btn")
 	public static WebElement INCOMPLETELINE_ERRORMESSAGE_CANCEL_BUTTON;
 	
 	@FindBy(xpath = "//*[@id='processlist.9.submit']/button")
 	public static WebElement COMPLETELINE_SUBMIT_BUTTON;
 	
-	@FindBy(xpath = "//*[@id='processlist.9.submit']/div/div/div[2]/div/div/div/div[1]/h4/div/span")
+	@FindBy(xpath = "//*[@id='processlist.11.submit']/div/div/div[2]/div/div/div/div[1]/h4/div/span")
 	public static WebElement COMPLETELINE_CONFIRMATIONLINE;
 	
-	@FindBy(xpath = "//*[@id='processlist.9.submit']/div/div/div[2]/div/div/div/div[4]/button[1]")
+	@FindBy(xpath = "//*[@id='processlist.11.submit']/div/div/div[2]/div/div/div/div[4]/button[1]")
 	public static WebElement YES_CONFIRMATIONLINE;
 	
 	@FindBy(xpath = "//*[@id='processlist.9.submit']/div/div/div[2]/div/div/div/div[4]/button[2]")
@@ -192,7 +213,13 @@ public class methodsforProcessPage {
 	public static WebElement STREAM_SORTBY_PROCESSPAGE;
 	
 	
+	// DESCRIPTION OF WASTE CREATED
 	
+//		@FindBy(xpath = "//*[@id='9']/span[2]")
+//		public static WebElement description_of_waste_created_PROCESSPAGE;
+	
+		@FindBy(css = "li.wasteItem--type")
+		public static WebElement description_of_waste_created_PROCESSPAGE;
 	
 	
 	private static Logger Log = Logger.getLogger(methodsforProcessPage.class.getName());
@@ -204,8 +231,6 @@ public class methodsforProcessPage {
 
 		try {
 
-			Log.info("Click on process Tab");
-		//	UtilFile.waitForElementToBeClickable(ProcessTab).click();
 			
 			UtilFile.waitForElementToBeClickable1(ProcessTab_hint);
 			UtilFile.waitForElementToBeClickable(ProcessTab).click();
@@ -246,7 +271,7 @@ public class methodsforProcessPage {
 
 		try {
 
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			UtilFile.waitForElementToBeClickable(dateicon_processpage).click();
 
 		} catch (StaleElementReferenceException e) {
@@ -282,8 +307,8 @@ public class methodsforProcessPage {
 
 		try {
 
-			Thread.sleep(2000);
-			
+			Thread.sleep(500);
+			UtilFile.invisibleshorttime();
           UtilFile.waitForElementToBeClickable(doseicon_processpage).click();
 
 
@@ -374,9 +399,11 @@ public class methodsforProcessPage {
 
 		try {
 
-			UtilFile.waitforpagetoload();
-			Thread.sleep(4000);
+			Thread.sleep(100);
+			UtilFile.invisibleshorttime();
 			UtilFile.waitForElementToBeClickable(m3icon_processpage).click();
+			
+
 
 		} catch (StaleElementReferenceException e) {
 			System.out.println("Element is not attached to the page document " + e.getMessage());
@@ -407,6 +434,24 @@ public class methodsforProcessPage {
 	}
 	
 	
+	public static void i_edit_value_for_volume_for_process_page_to_reset_to_default() {
+
+		try {
+
+			Thread.sleep(1000);
+			UtilFile.waitForElementToBeClickable(volume_m3icon_processpage).clear();
+			
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
+	
 	public static void i_edit_value_for_weight_for_process_page(String weightval) {
 
 		try {
@@ -425,13 +470,28 @@ public class methodsforProcessPage {
 
 	}
 	
-	
+	public static void i_edit_value_for_weight_for_process_page_to_reset_to_default() {
+
+		try {
+
+			Thread.sleep(1000);
+			UtilFile.waitForElementToBeClickable(weight_m3icon_processpage).clear();
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
 	
 	public static void i_click_on_save_button_for_m_process_page() {
 
 		try {
 
-			
+			Thread.sleep(1000);
 			UtilFile.waitForElementToBeClickable(save_m3icon_processpage).click();
 
 		} catch (StaleElementReferenceException e) {
@@ -444,6 +504,25 @@ public class methodsforProcessPage {
 
 	}
 	
+	
+	
+	public static void i_click_on_save_button_for_mthree_process_page_to_default() {
+
+		try {
+
+			Thread.sleep(1000);
+			UtilFile.waitForElementToBeClickable(save_m3icon_processpage).click();
+			Thread.sleep(5000);
+
+		} catch (StaleElementReferenceException e) {
+			System.out.println("Element is not attached to the page document " + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Element was not found in DOM " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("Unable to click on element " + e.getMessage());
+		}
+
+	}
 	
 	
 	public static void i_click_on_cancel_button_for_m_icon() {
@@ -492,7 +571,8 @@ public class methodsforProcessPage {
 
 		try {
 
-			UtilFile.waitforpagetoload();
+			Thread.sleep(500);
+			UtilFile.invisibleshorttime();
 			UtilFile.waitForElementToBeClickable(delete_button_item_process_page).click();
 
 		} catch (StaleElementReferenceException e) {
@@ -519,9 +599,10 @@ public class methodsforProcessPage {
 			System.out.println("Element was not found in DOM " + e.getMessage());
 		} catch (Exception e) {
 			System.out.println("Unable to click on element " + e.getMessage());
+		}catch(AssertionError e ) {
+            System.out.println(e.getMessage());
 		}
-
-	}
+		}
 	
 	public static void I_click_submit_for_a_waste_item_with_incomplete_fields() {
 
@@ -563,7 +644,7 @@ Assert.assertEquals("INCOMPLETE DATA", INCOMPLETELINE_ERRORMESSAGE.getText());
 	public static void clickoncancelbuttonforerrormessagepage() {
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(4000);
 						UtilFile.waitForElementToBeClickable(INCOMPLETELINE_ERRORMESSAGE_CANCEL_BUTTON).click();
 
 		} catch (StaleElementReferenceException e) {
@@ -1430,10 +1511,104 @@ Assert.assertEquals("INCOMPLETE DATA", INCOMPLETELINE_ERRORMESSAGE.getText());
 		}
 		
 	
+//  VERIFY THE DATA ON THE PROCESS PAGE
+		
+		
+		public void verify_it_on_process_page_and_delete_it() {
 
+			try {
+
+				UtilFile.waitForElementToBeClickable(description_of_waste_created_PROCESSPAGE);
+				System.out.println(description_of_waste_created_PROCESSPAGE.getText());
+				if(description_of_waste_created_PROCESSPAGE.getText().contains("Cuboid HEPA Filter")) {
+					System.out.println("data verified");
+				}else {
+					System.out.println("data not verified");
+				}
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Element is not attached to the page document " + e.getMessage());
+			} catch (NoSuchElementException e) {
+				System.out.println("Element was not found in DOM " + e.getMessage());
+			} catch (Exception e) {
+				System.out.println("Unable to click on element " + e.getMessage());
+			}
+
+		}
 
 	
+		
+		public void verify_if_the_item_is_deleted_from_page () {
+
+			try {
+				
+				Thread.sleep(500);
+				UtilFile.invisible();
+				UtilFile.waitForElementToBeClickable(delete_button_item_process_page).click();
+			//	Thread.sleep(3000);
+				UtilFile.waitForElementToBeClickable(Yes_delete_button_item_process_page).click();
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Element is not attached to the page document " + e.getMessage());
+			} catch (NoSuchElementException e) {
+				System.out.println("Element was not found in DOM " + e.getMessage());
+			} catch (Exception e) {
+				System.out.println("Unable to click on element " + e.getMessage());
+			}
+
+		}
 	
-	
-	
+		
+		
+		public void wait_for_the_spinner_to_disable () {
+
+			try {
+				UtilFile.invisibleshorttime();
+			
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Element is not attached to the page document " + e.getMessage());
+			} catch (NoSuchElementException e) {
+				System.out.println("Element was not found in DOM " + e.getMessage());
+			} catch (Exception e) {
+				System.out.println("Unable to click on element " + e.getMessage());
+			}
+
+		}
+		
+		
+		
+		public void Click_submit_button_for_recently_created_waste () {
+
+			try {
+				UtilFile.waitForElementToBeClickable(submit_button_item_process_page_most_recently_created).click();
+			
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Element is not attached to the page document " + e.getMessage());
+			} catch (NoSuchElementException e) {
+				System.out.println("Element was not found in DOM " + e.getMessage());
+			} catch (Exception e) {
+				System.out.println("Unable to click on element " + e.getMessage());
+			}
+
+		}
+		
+		
+		public void Click_yes_for_submission_for_recently_created_waste () {
+
+			try {
+				UtilFile.waitForElementToBeClickable(Yes_submit_button_item_process_page_most_recently_created).click();
+			
+
+			} catch (StaleElementReferenceException e) {
+				System.out.println("Element is not attached to the page document " + e.getMessage());
+			} catch (NoSuchElementException e) {
+				System.out.println("Element was not found in DOM " + e.getMessage());
+			} catch (Exception e) {
+				System.out.println("Unable to click on element " + e.getMessage());
+			}
+
+		}	
+		
 }

@@ -2,27 +2,28 @@ Feature: EDF Cradle Process Page
 
 
 
-
+@Test1
 Scenario: Process a Waste Item - Delete  GDRW-369 
-# Process a Waste Item - Delete
-# action: pre-condition: Given I am displaying the process items list
-	Given Navigate to the login page 
-	When  Enter Username 
-		|sekharreddy.04.08| 
-	And   Enter Pin 
-		|654321|
-	And   Click Submit button 
+## Process a Waste Item - Delete
+## action: pre-condition: Given I am displaying the process items list
+
+#	Given Navigate to the login page 
+#	When  Enter Username 
+#		|sekharreddy.04.08| 
+#	And   Enter Pin 
+#		|251217|
+#	And   Click Submit button 
+	And  I am on the Collect tab 
 	And i click on process tab 
 	
 	When I press the Delete icon 
 	Then the item is removed from the displayed list 
 	
 	
-	
+@Test1
 Scenario: Process a Waste Item - Submit  GDRW-371 
-# Process a Waste Item - Submit
-# action: pre-condition: Given that the Process list item is displayed
-
+## Process a Waste Item - Submit
+## action: pre-condition: Given that the Process list item is displayed
 
 
 	When I click submit for a waste item with incomplete fields 
@@ -35,28 +36,13 @@ Scenario: Process a Waste Item - Submit  GDRW-371
 	#Then the list item is removed from the Process and Collect Screen list and available to the packaging process
 	
 	
-@tocomplete 
-Scenario: Package Screen, Display items, view and sortby  GDRW-372 
-# Package Screen, Display items, view and sortby
-# action: pre-condition: Given items have been saved in the Collect screen
-# action: pre-condition: And submitted in the Process Screen
-	When I select the Package Screen 
-	Then the same list of waste items is displayed as icons with Item ID and Waste Stream displayed (as in the Invision designs) 
-	When I select the Package Screen 
-	And the items are removed from both the Collect and Process screens 
 	
-	
-	
-	
-	
-	
-	
-	
+@Test1
 Scenario: Process list View by  GDRW-374 
 
-# Process list View by
-# action: pre-condition: Given I am on the Process  tab
-# action: pre-condition: And i click the View by buttonÂ 
+## Process list View by
+## action: pre-condition: Given I am on the Process  tab
+## action: pre-condition: And i click the View by buttonÂ 
 
 
 	When I select View All from the option displayed on the pop up window for process page 
@@ -100,11 +86,11 @@ Scenario: Process list View by  GDRW-374
 	When I select View All from the option displayed on the pop up window for process page 
 	And  Select viewall option from dropdown 
 	
-	
+@Test1
 Scenario: Process List Sort by GDRW - 375 
-# Process List Sort by
-# action: pre-condition: Given I am on the Process tab
-# action: pre-condition: And i click the Sort by buttonÂ 
+## Process List Sort by
+## action: pre-condition: Given I am on the Process tab
+## action: pre-condition: And i click the Sort by buttonÂ 
 
 	When I select SORTBY from the option displayed on the pop up window for process page 
 	When I select Date from the option displayed on the pop up window for process page 
@@ -124,53 +110,53 @@ Scenario: Process List Sort by GDRW - 375
 	
 	
 	
-
+@Test1 
 Scenario: Process a Waste Item - Fields GDWR353 
-# Process a Waste Item - Fields
-# action: pre-condition: Given there are waste items in the Process tab
+## Process a Waste Item - Fields
+## action: pre-condition: Given there are waste items in the Process tab
 
-	Given Navigate to the login page 
-	When  Enter Username 
-		|sekharreddy.04.08| 
-	And   Enter Pin 
-		|654321|
-	And   Click Submit button 
-	And i click on process tab 
+#	Given Navigate to the login page 
+#	When  Enter Username 
+#		|sekharreddy.04.08| 
+#	And   Enter Pin 
+#		|251217|
+#	And   Click Submit button 
+#	And i click on process tab 
 	
 	And i click on date icon 
 	And i click on save button on Date 
 	
 	And i Click on dose icon of process page 
 	
-		And  i change on contact dose rate 
-			|51| 
-		And  i click on save button for dose process page 
-		And i Click on dose icon of process page 
-		When i click on cancel button for dose process page 
-		And i click on yes button for dose process page 
-		When i click on mthree icon of process page 
-		And  i edit value for volume for process page 
-			|12| 
-		And i edit value for weight for process page 
-			|2| 
-		Then i click on save button for mthree process page 
-		When i click on mthree icon of process page 
-		And  i click on cancel button for mthree icon 
-		And i click on yes for mthree button process page 
+	And  i change on contact dose rate 
+		|51| 
+	And  i click on save button for dose process page 
+	And i Click on dose icon of process page 
+	When i click on cancel button for dose process page 
+	And i click on yes button for dose process page 
+	When i click on mthree icon of process page 
+	And  i edit value for volume for process page 
+		|12| 
+	And i edit value for weight for process page 
+		|2| 
+	Then i click on save button for mthree process page 
+	When i click on mthree icon of process page 
+	And  i click on cancel button for mthree icon 
+	And i click on yes for mthree button process page 
 	
 	
-Scenario: Process a Waste Item - Fields GDWR353 
-# Process a Waste Item - Fields
-# action: pre-condition: Given there are waste items in the Process tab
-
-	Given Navigate to the login page 
-	When  Enter Username 
-		|sekharreddy.04.08| 
-	And   Enter Pin 
-		|654321|
-	And   Click Submit button 
-	And i click on process tab 
+@Test1 
+Scenario: Process defaults lines reset 
+#	Given Navigate to the login page 
+#	When  Enter Username 
+#		|sekharreddy.04.08| 
+#	And   Enter Pin 
+#		|251217|
+#	And   Click Submit button 
+#	And  I am on the Collect tab 
+#	And i click on process tab 
 	
-	And i click on date icon 
-	And i click on save button on Date 
-    
+	When i click on mthree icon of process page 
+	And  i edit value for volume for process page to reset to default 
+	And i edit value for weight for process page to reset to default 
+	Then i click on save button for mthree process page to default 

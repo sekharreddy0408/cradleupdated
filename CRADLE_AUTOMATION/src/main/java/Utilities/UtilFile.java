@@ -63,6 +63,15 @@ public class UtilFile {
 		
 	}
 	
+	public static void invisibleshorttime() {
+		By loadingImage = By.cssSelector("div.spinner");
+
+		WebDriverWait wait = new WebDriverWait(WebConnector.driver,4);
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingImage));
+		
+	}
+	
 	public static void invisible() {
 		By loadingImage = By.cssSelector("div.spinner");
 
@@ -71,6 +80,8 @@ public class UtilFile {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(loadingImage));
 		
 	}
+	
+	
 	
 	public static void verifydownloadedfilefromdownloads(String fileformat) {
 

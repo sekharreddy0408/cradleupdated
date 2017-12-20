@@ -25,7 +25,6 @@ public class ProcessPageStepDefinitions {
 	public void i_click_on_process_tab() {
 		System.out.println("I am on the Process Tab");
 		PP.i_click_on_process_tab();
-		//PP.processhintiussue();
 	}
 	
 	
@@ -72,6 +71,16 @@ public class ProcessPageStepDefinitions {
 	   PP.i_click_on_m_icon_of_process_page();
 	}
 
+	
+	@When("^i edit value for volume for process page to reset to default$")
+	public void i_edit_value_for_volume_for_process_page_to_reset_to_default()  {
+	   
+		PP.i_edit_value_for_volume_for_process_page_to_reset_to_default();
+	
+	}
+	
+	
+	
 	@When("^i edit value for volume for process page$")
 	public void i_edit_value_for_volume_for_process_page(DataTable vol)  {
 	   
@@ -80,6 +89,13 @@ public class ProcessPageStepDefinitions {
 		PP.i_edit_value_for_volume_for_process_page(data.get(0).get(0));
 	}
 
+	@When("^i edit value for weight for process page to reset to default$")
+	public void i_edit_value_for_weight_for_process_page_to_reset_to_default()  {
+	   
+		PP.i_edit_value_for_weight_for_process_page_to_reset_to_default();
+	
+	}
+	
 	@When("^i edit value for weight for process page$")
 	public void i_edit_value_for_weight_for_process_page(DataTable weight)  {
 		   
@@ -93,6 +109,12 @@ public class ProcessPageStepDefinitions {
 	   PP.i_click_on_save_button_for_m_process_page();
 	}
 
+	
+	@Then("^i click on save button for mthree process page to default$")
+	public void i_click_on_save_button_for_mthree_process_page_to_default() {
+	   PP.i_click_on_save_button_for_mthree_process_page_to_default();
+	}
+	
 	@When("^i click on cancel button for mthree icon$")
 	public void i_click_on_cancel_button_for_m_icon()  {
 	   PP.i_click_on_cancel_button_for_m_icon();
@@ -381,6 +403,35 @@ public void all_items_are_arranged_by_waste_Stream_alphabetically_for_process_pa
   PP.all_items_are_arranged_by_waste_Stream_alphabetically_for_process_page();
 }
 
+//
+
+
+@Then("^verify it on process page and delete it$")
+public void verify_it_on_process_page_and_delete_it()  {
+	 PP.verify_it_on_process_page_and_delete_it();
+}
+
+@Then("^verify if the item is deleted from page$")
+public void verify_if_the_item_is_deleted_from_page()  {
+	 PP.verify_if_the_item_is_deleted_from_page();
+}
+
+
+@Then("^wait for the spinner to disable$")
+public void wait_for_the_spinner_to_disable()  {
+	 PP.wait_for_the_spinner_to_disable();
+}
+
+@Then("^Click submit button for recently created waste$")
+public void Click_submit_button_for_recently_created_waste()  {
+	 PP.Click_submit_button_for_recently_created_waste();
+}
+
+
+@Then("^Click yes for submission for recently created waste$")
+public void Click_yes_for_submission_for_recently_created_waste()  {
+	 PP.Click_yes_for_submission_for_recently_created_waste();
+}
 
 
 }
